@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catwalk Showdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <!-- HEADER -->
+        <header>
+            <h1>✨ Catwalk Showdown ✨</h1>
+            <p>Style your model, walk the runway, and impress the judges!</p>
+        </header>
+
+        <!-- MAIN GAME SCREEN -->
+        <div id="main-stage">
+            
+            <!-- LEFT: THE MODEL CANVAS -->
+            <div id="model-zone">
+                <div class="canvas-container">
+                    <!-- Base Model Silhouette -->
+                    <div id="char-base" class="layer base-model">🧍</div>
+                    
+                    <!-- Clothing Layers -->
+                    <div id="layer-hat" class="layer accessory-layer"></div>
+                    <div id="layer-glasses" class="layer accessory-layer"></div>
+                    <div id="layer-tie" class="layer accessory-layer"></div>
+                    <div id="layer-scarf" class="layer accessory-layer"></div>
+                    <div id="layer-bow" class="layer accessory-layer"></div>
+                    <div id="layer-torso" class="layer clothing-layer"></div>
+                    <div id="layer-legs" class="layer clothing-layer"></div>
+                    <div id="layer-shoes" class="layer clothing-layer"></div>
+                </div>
+                
+                <button id="btn-runway" onclick="startCatwalk()">🚀 Walk the Catwalk! 🚀</button>
+            </div>
+
+            <!-- RIGHT: WARDROBE CLOSET -->
+            <div id="wardrobe-zone">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('tops')">Tops/Dresses</button>
+                    <button class="tab-btn" onclick="switchTab('bottoms')">Bottoms</button>
+                    <button class="tab-btn" onclick="switchTab('shoes')">Shoes</button>
+                    <button class="tab-btn" onclick="switchTab('accessories')">Accessories</button>
+                </div>
+
+                <div id="closet-items" class="items-grid">
+                    <!-- Dynamic Items loaded via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- RUNWAY ANIMATION & JUDGES OVERLAY -->
+        <div id="runway-screen" class="hidden">
+            <div class="runway-track">
+                <div id="runway-model">🧍</div>
+            </div>
+            
+            <div id="judges-panel" class="hidden">
+                <h2>The Judges' Verdict</h2>
+                <div class="judges-container">
+                    <div class="judge-card" id="judge-1">
+                        <div class="avatar">🧐</div>
+                        <h3>Pierre (Color)</h3>
+                        <p class="score">-</p>
+                        <p class="feedback">Waiting...</p>
+                    </div>
+                    <div class="judge-card" id="judge-2">
+                        <div class="avatar">😎</div>
+                        <h3>Zoe (Style)</h3>
+                        <p class="score">-</p>
+                        <p class="feedback">Waiting...</p>
+                    </div>
+                    <div class="judge-card" id="judge-3">
+                        <div class="avatar">👑</div>
+                        <h3>Coco (Accessories)</h3>
+                        <p class="score">-</p>
+                        <p class="feedback">Waiting...</p>
+                    </div>
+                </div>
+                <button id="btn-reset" onclick="resetGame()">Design Another Look</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
