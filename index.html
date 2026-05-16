@@ -12,17 +12,73 @@
         <!-- HEADER -->
         <header>
             <h1>✨ Catwalk Showdown ✨</h1>
-            <p>Style your model, walk the runway, and impress the judges!</p>
+            <p>Customize your avatar, style your look, and walk the runway!</p>
         </header>
 
-        <!-- MAIN GAME SCREEN -->
-        <div id="main-stage">
-            
+        <!-- STEP 1: CHARACTER CREATOR -->
+        <div id="creator-stage">
+            <h2>Step 1: Create Your Model</h2>
+            <div class="creator-layout">
+                <!-- Preview Canvas -->
+                <div class="preview-box">
+                    <div class="canvas-container">
+                        <div id="preview-base" class="layer base-model">🧍‍♀️</div>
+                        <div id="preview-hair" class="layer hair-layer">💇‍♀️</div>
+                        <div id="preview-eyes" class="layer eye-layer">👀</div>
+                    </div>
+                </div>
+
+                <!-- Customization Panel -->
+                <div class="custom-panel">
+                    <div class="option-group">
+                        <label>Body Type</label>
+                        <div class="btn-row">
+                            <button class="choice-btn active" onclick="setBody('female')">Female</button>
+                            <button class="choice-btn" onclick="setBody('male')">Male</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Skin Tone</label>
+                        <div class="btn-row" id="skin-tones">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Hair Style</label>
+                        <div class="btn-row" id="hair-styles">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Hair Color</label>
+                        <div class="btn-row" id="hair-colors">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Eye Color</label>
+                        <div class="btn-row" id="eye-colors">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <button id="btn-to-wardrobe" onclick="goToWardrobe()">Next: Pick Clothes 👗</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: MAIN DRESS-UP STAGE (Initially Hidden) -->
+        <div id="main-stage" class="hidden">
             <!-- LEFT: THE MODEL CANVAS -->
             <div id="model-zone">
                 <div class="canvas-container">
-                    <!-- Base Model Silhouette -->
-                    <div id="char-base" class="layer base-model">🧍</div>
+                    <div id="char-base" class="layer base-model">🧍‍♀️</div>
+                    <div id="char-hair" class="layer hair-layer">💇‍♀️</div>
+                    <div id="char-eyes" class="layer eye-layer">👀</div>
                     
                     <!-- Clothing Layers -->
                     <div id="layer-hat" class="layer accessory-layer"></div>
@@ -47,16 +103,27 @@
                     <button class="tab-btn" onclick="switchTab('accessories')">Accessories</button>
                 </div>
 
-                <div id="closet-items" class="items-grid">
-                    <!-- Dynamic Items loaded via JS -->
-                </div>
+                <div id="closet-items" class="items-grid"></div>
             </div>
         </div>
 
-        <!-- RUNWAY ANIMATION & JUDGES OVERLAY -->
+        <!-- STEP 3: RUNWAY ANIMATION & JUDGES -->
         <div id="runway-screen" class="hidden">
             <div class="runway-track">
-                <div id="runway-model">🧍</div>
+                <!-- Wrapper to animate custom model entirely -->
+                <div id="runway-model-wrapper">
+                    <div id="runway-base" class="layer base-model">🧍‍♀️</div>
+                    <div id="runway-hair" class="layer hair-layer">💇‍♀️</div>
+                    <div id="runway-eyes" class="layer eye-layer">👀</div>
+                    <div id="r-layer-hat" class="layer accessory-layer"></div>
+                    <div id="r-layer-glasses" class="layer accessory-layer"></div>
+                    <div id="r-layer-scarf" class="layer accessory-layer"></div>
+                    <div id="r-layer-tie" class="layer accessory-layer"></div>
+                    <div id="r-layer-bow" class="layer accessory-layer"></div>
+                    <div id="r-layer-torso" class="layer clothing-layer"></div>
+                    <div id="r-layer-legs" class="layer clothing-layer"></div>
+                    <div id="r-layer-shoes" class="layer clothing-layer"></div>
+                </div>
             </div>
             
             <div id="judges-panel" class="hidden">
